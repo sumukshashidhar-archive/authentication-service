@@ -15,5 +15,19 @@ module.exports = {
                 }
             })
         })
+    },
+
+    validatePass: async function(plaintext_password, hashedPassword) {
+        return new Promise(function(resolve, reject) {
+            bcrypt.compare(plaintext_password, hashedPassword, function(err, response) {
+                if (err) {
+                    logger.error("Failed to compare hashed password: %s", err);
+                    reject(err);
+                } else {
+                    logger.silly("Password comparison succeeded");
+                    resolve(hashedPassword);
+                }
+            })
+        })
     }
 }
