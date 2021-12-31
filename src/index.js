@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
 const rfs = require('rotating-file-stream'); // version 2.x
+const winston = require('winston');
 
 require('dotenv').config()
 
