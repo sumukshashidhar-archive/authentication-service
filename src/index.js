@@ -35,7 +35,6 @@ app.use(morgan('combined', { stream: accessLogStream }))
 const logger = winston.createLogger({
     level: process.env.LOG_LEVEL,
     format: winston.format.json(),
-    defaultMeta: { service: 'user-service' },
     transports: [
         new winston.transports.File({ filename: 'log/error.log', level: 'error' }),
         new winston.transports.File({ filename: 'log/combined.log' }),
