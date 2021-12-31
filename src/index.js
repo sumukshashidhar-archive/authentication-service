@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const rfs = require('rotating-file-stream'); // version 2.x
 const winston = require('winston');
-
+const mongoose = require('mongoose')
 require('dotenv').config()
 
 // defining the Express app
@@ -42,6 +42,12 @@ const logger = winston.createLogger({
     ]
 
 })
+
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true})
+    .then(() => logger.info("MongoDB Connected"))
+  .catch(err => console.error(err));
 
 //
 // If we're not in production then log to the `console` with the format:
