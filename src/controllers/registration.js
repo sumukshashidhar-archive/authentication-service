@@ -33,9 +33,7 @@ module.export = async function(username, password, role) {
             // means that the conflict check succeeded. we can add the user.
             let userObject = await createUser(username, password, role);
             resolve(userObject);
-        } else {
-            // if the user already exists and the conflict check fails.
-            resolve(false);
         }
+        resolve(false);
     })
 }
