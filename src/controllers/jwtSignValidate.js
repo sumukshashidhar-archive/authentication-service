@@ -15,9 +15,9 @@ const tokenOptions = require("./../config/tokenOptions");
 
 
 module.exports = {
-    sign: async function(username) {
-        return new Promise(function(resolve, reject) {
-            jwt.sign({username}, privateKEY, tokenOptions.signOptions, function(err, signedToken) {
+    sign: async function (username, role) {
+        return new Promise(function (resolve, reject) {
+            jwt.sign({ username: username, role: role }, privateKEY, tokenOptions.signOptions, function (err, signedToken) {
                 if (err) {
                     logger.error(`Failed to sign token ${err}`);
                     reject(err);
@@ -29,9 +29,9 @@ module.exports = {
         })
     },
 
-    verification: async function(passedToken) {
-        return new Promise(function(resolve, reject) {
-            jwt.verify(passedToken, publicKEY, tokenOptions.verifyOptions, function(err, decodedToken) {
+    verification: async function (passedToken) {
+        return new Promise(function (resolve, reject) {
+            jwt.verify(passedToken, publicKEY, tokenOptions.verifyOptions, function (err, decodedToken) {
                 if (err) {
                     logger.error(`Failed to validate token ${err}`);
                     reject(err);
