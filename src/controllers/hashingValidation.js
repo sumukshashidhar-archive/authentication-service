@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt")
-const logger = require('winston')
+const logger = require("./../config/logger").logger;
 //https://stackoverflow.com/questions/14531232/how-to-use-winston-in-several-modules
 
 module.exports = {

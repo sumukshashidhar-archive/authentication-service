@@ -8,6 +8,7 @@ const path = require('path');
 const rfs = require('rotating-file-stream'); // version 2.x
 const winston = require('winston');
 const mongoose = require('mongoose')
+const logger = require("./config/logger").logger;
 require('dotenv').config()
 
 // defining the Express app
@@ -31,16 +32,16 @@ var accessLogStream = rfs.createStream('access.log', {
 // setup the logger
 app.use(morgan('combined', { stream: accessLogStream }))
 
-// set up the general logger
-const logger = winston.createLogger({
-    level: process.env.LOG_LEVEL,
-    format: winston.format.json(),
-    transports: [
-        new winston.transports.File({ filename: 'log/error.log', level: 'error' }),
-        new winston.transports.File({ filename: 'log/combined.log' }),
-    ]
+// // set up the general logger
+// const logger = winston.createLogger({
+//     level: process.env.LOG_LEVEL,
+//     format: winston.format.json(),
+//     transports: [
+//         new winston.transports.File({ filename: 'log/error.log', level: 'error' }),
+//         new winston.transports.File({ filename: 'log/combined.log' }),
+//     ]
 
-})
+// })
 
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true, 
@@ -52,11 +53,11 @@ mongoose.connect(process.env.MONGO_URI, {
 // If we're not in production then log to the `console` with the format:
 // `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
 //
-if (process.env.NODE_ENV !== 'production') {
-    logger.add(new winston.transports.Console({
-        format: winston.format.simple(),
-    }));
-}
+// if (process.env.NODE_ENV !== 'production') {
+//     logger.add(new winston.transports.Console({
+//         format: winston.format.simple(),
+//     }));
+// }
 
 // add prefix to routes
 const router = express.Router();

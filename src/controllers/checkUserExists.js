@@ -1,5 +1,5 @@
 const user = require("./../models/user");
-const logger = require('winston')
+const logger = require("./../config/logger").logger;
 module.exports = async function (username) {
     /**
      * Given a username, checks for a conflict in the database.

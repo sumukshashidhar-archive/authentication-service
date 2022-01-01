@@ -1,5 +1,5 @@
 const user = require("./../models/user");
-const logger = require('winston')
+const logger = require("./../config/logger").logger;
 const hash = require("./../controllers/hashingValidation").hashPass;
 const conflictCheck = require("./checkUserExists")
 
