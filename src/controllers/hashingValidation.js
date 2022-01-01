@@ -7,8 +7,6 @@ module.exports = {
         return new Promise(function(resolve, reject) {
             bcrypt.hash(plaintext_password, parseInt(process.env.SALT_ROUNDS), function(err, hashedPassword) {
                 if (err) {
-                    console.log(plaintext_password)
-                    console.log(process.env.SALT_ROUNDS);
                     logger.error(`Failed to hash password ${err}. ${process.env.SALT_ROUNDS}. ${plaintext_password}`);
                     reject(err);
                 } else {
