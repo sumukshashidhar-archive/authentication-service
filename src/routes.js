@@ -13,8 +13,9 @@ module.exports = function (app) {
             // successful validation and json token
             res.status(200).json({"token": response})
 
-        }
+        } else {
         res.json({"Error": "Either user does not exist or wrong password."});
+        }
     });
 
     app.post('/register', async function(req, res) {
