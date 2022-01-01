@@ -1,10 +1,10 @@
 const user = require("./../models/user");
 const findUser = require("./checkUserExists");
-const compareHash = require("./../controllers/hashingValidation").validatePass();
-const signJWT = require("./jwtSignValidate").sign()
+const compareHash = require("./../controllers/hashingValidation").validatePass;
+const signJWT = require("./jwtSignValidate").sign;
 
 module.exports = async function(username, password) {
-    return new Promise(function(resolve, reject) {
+    return new Promise(async function(resolve, reject) {
         // first, make sure that we find the user.
         const userObject = await findUser(username);
         if (userObject) {
