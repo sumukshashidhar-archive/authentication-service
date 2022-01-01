@@ -10,7 +10,7 @@ COPY src/ .
 
 RUN mkdir ./keys
 
-RUN cd keys && ssh-keygen -q -N '' -t rsa -b 4096 -m PEM -f private.pem && openssl rsa -in private.pem -pubout -outform PEM -out public.pem && rm private.pem.pub
+RUN cd keys && ssh-keygen -q -N '' -t rsa -b 4096 -m PEM -f private.key && openssl rsa -in private.key -pubout -outform PEM -out public.key && rm private.key.pub
 
 EXPOSE 3000
 
