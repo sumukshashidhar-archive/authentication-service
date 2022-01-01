@@ -25,7 +25,7 @@ module.exports = {
                     reject(err);
                 } else {
                     logger.silly("Password comparison succeeded");
-                    resolve(hashedPassword);
+                    resolve(response);
                 }
             })
         })
