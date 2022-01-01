@@ -31,13 +31,14 @@ module.exports = function (app) {
     app.post('/validate', async function(req, res) {
         let token = await tokenExtractor(req.headers.authorization);
         if (token !== false) {
-            logger.info(`${token}`)
             let response = await validateJWT(token);
             if (response !== false) {
                 res.status(200).json({"token": response});
             } else {
                 res.status(403).json({"message": "decoding failed"})
             }
+        } else {
+            res.status(403).json({"message": "Failed Extraction"})
         }
     })
     return app;
