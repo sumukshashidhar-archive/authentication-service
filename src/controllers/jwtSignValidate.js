@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const path = require('path');
-const logger = reqire('winston');
+const logger = require('winston');
 
 const publicKeyPath = path.join(__dirname, './../keys/public.pem');
 const privateKeyPath = path.join(__dirname, './../keys/private.pem');
