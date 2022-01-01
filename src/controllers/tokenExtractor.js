@@ -1,7 +1,7 @@
 async function tokenExtractor(header) {
     return new Promise(function (resolve, reject) {
         if (header.startsWith("Bearer ")) {
-            let token = header.substring(7, header.length - 1)
+            let token = header.substring(7, header.length)
             resolve(token);
         }
         resolve(false)
