@@ -19,12 +19,15 @@ module.exports = function (app) {
     });
 
     app.post('/register', async function(req, res) {
-        console.log(req.body.username, req.body.password)
         let response = await register(req.body.username, req.body.password, "user");
         if (response !== false) {
             res.status(200).json({"object": response})
         } else {res.status(500).json({"Message": "Failed to create user"})}
         
+    });
+
+    app.post('/validate', async function(req, res) {
+
     })
     return app;
 }
