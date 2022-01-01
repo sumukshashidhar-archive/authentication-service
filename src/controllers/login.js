@@ -1,4 +1,3 @@
-const user = require("./../models/user");
 const findUser = require("./checkUserExists");
 const compareHash = require("./../controllers/hashingValidation").validatePass;
 const signJWT = require("./jwtSignValidate").sign;
