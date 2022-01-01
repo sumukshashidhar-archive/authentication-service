@@ -33,8 +33,6 @@ module.exports = {
         return new Promise(function (resolve, reject) {
             jwt.verify(passedToken, publicKEY, tokenOptions.verifyOptions, function (err, decodedToken) {
                 if (err) {
-                    logger.info(publicKEY)
-                    logger.info(privateKEY)
                     logger.error(`Failed to validate token ${err}`);
                     resolve(false);
                 } else {
