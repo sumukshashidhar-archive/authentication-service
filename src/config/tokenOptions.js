@@ -1,13 +1,13 @@
 module.exports  = {
-    issuer: "Sumuk Shashidhar",
+    issuer: "SumukShashidhar",
     signOptions: {
-        issuer:  "Sumuk Shashidhar",
+        issuer:  "SumukShashidhar",
         expiresIn:  "24h",
         algorithm:  "RS512"
     },
     verifyOptions: {
-        issuer:  "Sumuk Shashidhar",
+        issuer:  "SumukShashidhar",
         expiresIn:  "24h",
-        algorithm:  "RS512"
+        algorithm:  ["RS512"],
        }
 }
